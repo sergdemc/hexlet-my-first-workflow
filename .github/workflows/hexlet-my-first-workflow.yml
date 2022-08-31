@@ -1,7 +1,20 @@
 name: Hexlet-my-first-worlflow
-on: [push]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
 jobs:
-  Explore-GitHub-Actions:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - run: make say-hello
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      
+
+      - name: say-hello
+        run: make say-hello
